@@ -14,6 +14,7 @@
   <body>
     <div class="container">
         <h1>Sitio web - Home</h1>
+        <?php showMessageLogin() ?>
         <?php require_once 'components/login_form.php';?>
         <a href="nuevo.php">Nuevo</a>
         <?php echo getListPosts(); ?>
