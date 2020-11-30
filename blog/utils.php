@@ -1,4 +1,21 @@
-<?php 
+<?php
+
+    function showMessageLogin() {
+        session_start();
+
+        if (isset($_SESSION['error'])) {
+            echo '<div class="alert alert-danger" role="alert">';
+            echo $_SESSION['error'];
+            echo '</div>';
+        }
+
+        if (isset($_SESSION['info'])) {
+            echo '<div class="alert alert-primary" role="alert">';
+            echo $_SESSION['info'];
+            echo '</div>';
+        }
+    }
+
     function getListPosts() {
         $path = "./posts";
         $ficheros = array_diff(scandir($path), array('..','.'));
