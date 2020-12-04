@@ -1,25 +1,56 @@
 <?php
+    function isLogged() {
+        session_start();
 
-    function showMessageLogin() {
+        if ($_SESSION['auth']) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function setErrorMessage($message) {
+        $_SESSION['error'] = $message;
+    }
+
+    function setInfoMessage($message) {
+        $_SESSION['info'] = $message;
+    }
+
+    function isValidUser($user, $password) {
+        if ($user == 'admin' && $password == 'admin123') {
+            return true;
+        }
+        
+        return false;
+    }
+
+    function getErrorMessage() {
         session_start();
 
         if (isset($_SESSION['error'])) {
             echo '<div class="alert alert-danger" role="alert">';
             echo $_SESSION['error'];
             echo '</div>';
+            unset($_SESSION['error']);
         }
+    }
+
+    function getInfoMessage() {
+        session_start();
 
         if (isset($_SESSION['info'])) {
             echo '<div class="alert alert-primary" role="alert">';
             echo $_SESSION['info'];
             echo '</div>';
+            unset($_SESSION['info']);
         }
     }
 
     function getListPosts() {
         $path = "./posts";
         $ficheros = array_diff(scandir($path), array('..','.'));
-        
+        $result = '';
         $result .= '<ul>'.PHP_EOL;
 
         foreach ($ficheros as $key => $value) {
@@ -35,24 +66,11 @@
         return $result;
     }
 
-    function getTheLastTwoPost() {
-        $path = "./posts";
-        $ficheros = array_diff(scandir($path), array('..','.'));
-
-        foreach ($ficheros as $key => $file) {
-            $fullPath = "./posts/".$file;
-            $listDate[$file] = filemtime($fullPath);
-        }
-        array_multisort($listDate);
-        //echo 'Fecha: '.date ("F d Y H:i:s.", filemtime($fullPath)).'<br>';
-
-        return $fechas;
-    }
-
     function getPostHTML() {
         $file = $_GET['nombre'];
         $path = './posts/'.$file;
         $contenido = file_get_contents($path);
+        $result = '';
 
         $result .= '<h1>Nombre del POST: '.$file.'</h1>'.PHP_EOL;
 

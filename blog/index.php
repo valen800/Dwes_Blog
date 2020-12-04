@@ -1,4 +1,4 @@
-<?php require_once 'utils.php' ?>
+<?php require_once 'lib/utils.php' ?>
 
 <!doctype html>
 <html lang="en">
@@ -14,11 +14,13 @@
   <body>
     <div class="container">
         <h1>Sitio web - Home</h1>
-        <?php showMessageLogin() ?>
-        <?php require_once 'components/login_form.php';?>
+        <?php 
+          echo getErrorMessage();
+          echo getInfoMessage();
+        ?>
+        <? echo isLogged() ? require_once 'components/logout_form.php' : require_once 'components/login_form.php'; ?>
         <a href="nuevo.php">Nuevo</a>
         <?php echo getListPosts(); ?>
-        <?php echo getTheLastTwoPost(); ?>
     </div>
       
     <!-- Optional JavaScript -->
