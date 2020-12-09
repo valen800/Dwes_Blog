@@ -1,7 +1,7 @@
 <?php
     require_once 'lib/utils.php';
     
-    session_start();
+    checkSession();
 
     if (isset($_REQUEST['entrar'])) {
 
@@ -19,7 +19,7 @@
         $_SESSION = array();
         session_destroy();
 
-        session_start();
+        checkSession();
         $_SESSION['auth'] = false;
         setInfoMessage('Sesion terminada');
     }

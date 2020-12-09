@@ -42,7 +42,7 @@
         </div>
 
         <div class="row mt-3">
-          <label for="lPost">Lista de Post
+          <label for="lPost">Lista de Posts
             <?php echo getListPosts(); ?>
           </label>
         </div>

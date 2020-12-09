@@ -1,6 +1,12 @@
 <?php
     require_once 'lib/security.php';
 
+    function checkSession() {
+        if(!($_SESSION)) {
+            session_start();
+        }
+    }
+
     function setErrorMessage($message) {
         $_SESSION['error'] = $message;
     }
@@ -18,7 +24,7 @@
     }
 
     function getErrorMessage() {
-        session_start();
+        checkSession();
 
         if (isset($_SESSION['error'])) {
             echo '<div class="alert alert-danger" role="alert">';
@@ -29,7 +35,7 @@
     }
 
     function getInfoMessage() {
-        session_start();
+        checkSession();
 
         if (isset($_SESSION['info'])) {
             echo '<div class="alert alert-primary" role="alert">';
