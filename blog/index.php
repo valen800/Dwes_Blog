@@ -18,7 +18,7 @@
           echo getErrorMessage();
           echo getInfoMessage();
         ?>
-        <? echo isLogged() ? require_once 'components/logout_form.php' : require_once 'components/login_form.php'; ?>
+        <?php require_once 'components/login_form.php'; ?>
         <a href="nuevo.php">Nuevo</a>
         <?php echo getListPosts(); ?>
     </div>
