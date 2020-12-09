@@ -1,4 +1,5 @@
 <?php require_once 'lib/utils.php' ?>
+<?php require_once 'lib/security.php' ?>
 
 <!doctype html>
 <html lang="en">
@@ -13,14 +14,38 @@
   </head>
   <body>
     <div class="container">
-        <h1>Sitio web - Home</h1>
-        <?php 
-          echo getErrorMessage();
-          echo getInfoMessage();
-        ?>
-        <?php require_once 'components/login_form.php'; ?>
-        <a href="nuevo.php">Nuevo</a>
-        <?php echo getListPosts(); ?>
+        <div class="row mt-2">
+          <h1>Sitio web - Home</h1>
+        </div>
+
+        <div class="row">
+          <?php
+            echo getErrorMessage();
+            echo getInfoMessage();
+          ?>
+        </div>
+
+        <div class="row mt-3">
+          <?php 
+            if (!isAllowed()) {
+              require_once 'components/login_form.php';
+            } else {
+              require_once 'components/logout_form.php';
+            }
+          ?>
+        </div>
+
+        <div class="row mt-3">
+            <?php if (isAllowed()) { ?>
+              <a href="nuevo.php">Nuevo Post</a>
+            <?php } ?>
+        </div>
+
+        <div class="row mt-3">
+          <label for="lPost">Lista de Post
+            <?php echo getListPosts(); ?>
+          </label>
+        </div>
     </div>
       
     <!-- Optional JavaScript -->

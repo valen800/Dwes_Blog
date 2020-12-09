@@ -1,13 +1,5 @@
 <?php
-    function isLogged() {
-        session_start();
-
-        if ($_SESSION['auth']) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    require_once 'lib/security.php';
 
     function setErrorMessage($message) {
         $_SESSION['error'] = $message;
@@ -56,8 +48,10 @@
         foreach ($ficheros as $key => $value) {
             $result .=  '<li>'.PHP_EOL;
             $result .= '<a href="verpost.php?nombre='.urldecode($value).'">'.$value.'</a>'.PHP_EOL;
-            $result .= '<a href="borrar.php?nombre='.urldecode($value).'""> Borrar </a>'.PHP_EOL;
-            $result .= '<a href="editar.php?nombre='.urldecode($value).'""> Editar </a>'.PHP_EOL;
+            if (isAllowed()) {
+                $result .= '<a href="borrar.php?nombre='.urldecode($value).'""> Borrar </a>'.PHP_EOL;
+                $result .= '<a href="editar.php?nombre='.urldecode($value).'""> Editar </a>'.PHP_EOL;
+            }
             $result .= '</li>'.PHP_EOL;
         }
 
