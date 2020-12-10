@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Sitio web</title>
+    <title>Blog - Home</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +15,7 @@
   <body>
     <div class="container">
         <div class="row mt-2">
-          <h1>Sitio web - Home</h1>
+          <h1>Blog - Home</h1>
         </div>
 
         <div class="row">

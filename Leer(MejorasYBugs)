@@ -1,0 +1,9 @@
+-Sistema de Login (Hecho)
+-Protección por usuario (Hecho)
+-Funciones Borrar y Editar (Hecho)
+-Funcion Nuevo Post (Hecho)
+
+-Refactorizar funciones editar y guardar
+-Utilizar el mismo formulario para guardar y editar pasando un flag
+-Bug al editar el titulo de un post te crea un nuevo fichero (Utilizar id en vez de titulos)
+-Personalizar con bootstrap (mas estilos)
